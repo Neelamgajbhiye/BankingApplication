@@ -1,0 +1,73 @@
+<div class="container card-outer">
+   
+    <div class="card-login" *ngIf="userInfo!==null;else loggedOut" >
+      <div class="card-header"> <h1 class="text-center">Profile</h1></div>
+      <div class="card-body">
+        
+          
+          <div class="form-group row">
+            <label class="col-md-6 " for="username">User Name :</label>
+          <div class="col-md-6"> {{userInfo.personName}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="gender">Gender :</label>
+            <div class="col-md-6"> {{userInfo.gender}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="dob">DateOfBirth :</label>
+            <div class="col-md-6">{{userInfo.dob}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="email">Email :</label>
+            <div class="col-md-6">{{userInfo.email}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="telephonenumber">Telephone Number :</label>
+            <div class="col-md-6">{{userInfo.telephoneNumber}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="address">Flat No:</label>
+            <div class="col-md-6"> {{userInfo.address.flatNo}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="address">State:</label>
+            <div class="col-md-6">{{userInfo.address.state}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="address">City:</label>
+            <div class="col-md-6">{{userInfo.address.city}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="address">PinCode:</label>
+            <div class="col-md-6">{{userInfo.address.pincode}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="address">Branch Name:</label>
+            <div class="col-md-6">{{userInfo.branch.branchName}}</div> 
+          </div>
+          <div class="form-group row">
+            <label class="col-md-6 " for="address">IFSC:</label>
+            <div class="col-md-6"> {{userInfo.branch.ifsc}}</div> 
+          </div>
+          <!-- <div class="form-group">
+            <label for="address">manager:</label>
+            {{userInfo.manager.personId}}
+          </div> -->
+
+
+
+          <!-- <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" ngModel id="password" placeholder="Enter password"
+              name="password">
+          </div> -->
+          <!-- <input type="submit"  class="btn btn-success" name="login" value="login"/> -->
+        
+      </div>
+       
+    </div>
+    
+<ng-template #loggedOut>
+  Please Login first!!!!
+</ng-template>
+  </div>

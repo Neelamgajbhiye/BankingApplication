@@ -1,0 +1,39 @@
+
+<div class="card-outer">
+   
+    <div class="card-login">
+      <div class="card-header">
+        <h1 class="text-center">Edit Account</h1>
+      </div>
+      <div class="card-body" >
+        <form class="form-group" #editAccountForm="ngForm" (ngSubmit)="editAccount(editAccountForm.value)">
+          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+          <div class="form-group"> 
+          
+            <label for="name">Customer Id</label>
+            <input type="number" class="form-control" id="customerId" ngModel 
+              name="customerId" disabled>
+          </div>
+          <div class="form-group">
+            
+            <label for="accountNumber">Account Number</label>
+            <input type="number" class="form-control" id="accountNumber" ngModel 
+              name="accountNumber" disabled>
+          </div>
+          
+          <div class="form-group">
+           
+       
+            <label for="accountType" style="margin-right:20px">accountType</label>
+              <input type="radio" value='SAVING'  name="accountType" ngModel>Saving
+  <input type="radio" value='CURRENT'  name="accountType" ngModel >Current
+
+          </div>
+        
+          <input type="submit" [disabled]="!editAccountForm.form.valid"  class="btn btn-success btn-all" name="editAccount" value="Edit Account"/>
+        </form>
+      </div>
+       
+    </div>
+  </div>

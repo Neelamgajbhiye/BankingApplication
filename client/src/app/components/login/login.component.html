@@ -1,0 +1,72 @@
+
+<div class="card-outer">
+  
+  <div class="card-login" style="height: 475px">
+    <div class="card-header">
+      <h1 class="text-center">Login</h1>
+    </div>
+    <div class="card-body" >
+      <form class="form-group" #loginForm="ngForm" (ngSubmit)="handleLogin(loginForm.value)">
+        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+        <div class="alert alert-success"   *ngIf="loginSuccess">{{successMessage}}</div>
+        <div class="form-group card-form-row-login ">
+          <label for="username"><span class="error">*</span>User Name :</label>
+          <input type="text" class="form-control border-green" id="username" ngModel placeholder="Enter User Name"
+            name="username" required minlength="4" #userName="ngModel" [ngClass]="{ 'is-invalid': userName.invalid && (userName.dirty || userName.touched) && userName.errors }">
+            <div class="row  margin-error">
+              <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+              class="invalid-feedback error" style="width: fit-content;">
+          
+            <div *ngIf="userName.errors?.['required']">
+              Username is required.
+            </div>
+            <div *ngIf="userName.errors?.['minlength']">
+              Username must be at least 4 characters long.
+            </div>
+          </div>
+
+          </div>
+        </div>
+        <div class="form-group card-form-row-login">
+          <label for="pwd"><span class="error">*</span>Password:</label>
+          <div style="display:flex">
+            <input [type]="fieldTextType ? 'text' : 'password'"  
+            class="form-control border-green" ngModel id="password" placeholder="Enter Password"
+            name="password" 
+            
+            
+             required #pwd="ngModel" aria-describedby="basic-addon2" 
+             [ngClass]="{ 'is-invalid': pwd.invalid && (pwd.dirty || pwd.touched) && pwd.errors 
+             ,'is-valid':!pwd.invalid && !(pwd.dirty || pwd.touched) && !pwd.errors}">
+            <!-- <div class="input-group-addon border-green" style="height: fit-content;">  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  -->
+              <!-- <span class="input-group-text" id="basic-addon2"> -->
+                <i  class=" fa eye-icon"
+                [ngClass]="{
+                  'fa-eye-slash': !fieldTextType,
+                  'fa-eye': fieldTextType
+                }"
+                (click)="toggleFieldTextType()"></i>
+              <!-- </span> -->
+           <!-- </div> -->
+          </div>
+         
+            <div class="row  margin-error">
+              <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+              class="invalid-feedback error" style="width: fit-content;">
+          
+            <div *ngIf="pwd.errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="pwd.errors?.['invalidPassword']">
+              Your password must be at least 8 characters long, contain at least one number, one uppercase and lowercase letter.
+            </div>
+          </div>
+
+          </div>
+        </div>
+        <input type="submit"  class="btn btn-success btn-all" name="login" id="login" value="login"/>
+      </form>
+    </div>
+     
+  </div>
+</div>

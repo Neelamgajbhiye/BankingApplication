@@ -1,0 +1,51 @@
+
+
+<div class="container card-dashboard">
+    <div class="row" style="margin-left: -70px;">
+        <h1> Welcome {{username}} !</h1>
+
+    </div>
+  <div class="row"> 
+<div *ngIf="isManager" >
+    <div class="row ">
+        <div class="col-md-6 card-login" 
+        > <button (click)="addCustomer()" id="addCustomer" class="btn btn-success btn-all">Add Customer</button>
+        <button class="btn btn-success btn-all" id="deleteCustomer" (click)="deleteCustomer()">Delete Customer</button>
+        <button class="btn btn-success btn-all" id="updateCustomer"(click)="updateCustomer()">Update Customer</button>
+       </div>
+    
+    
+  
+        <div class="col-md-6 card-login"
+        > <button class="btn btn-success btn-all" id="addAccount" (click)="addAccount()">Add Account</button>
+    <button class="btn btn-success btn-all" id="updateAccount"(click)="updateAccount()">Update Account</button>
+    <button class="btn btn-success btn-all" id="deleteAccount" (click)="deleteAccount()">Delete Account</button>
+        </div></div>
+<div class="row ">
+    <div class="col-md-6 card-login"
+    >  <button class="btn btn-success btn-all" id="deposit"(click)="deposit()">Deposit</button>
+    <button class="btn btn-success btn-all"  id="withdraw" (click)="withdraw()">Withdraw</button>
+    <button class="btn btn-success btn-all" id="fundTransferManager"(click)="transferFund()">Fund Transfer</button>
+</div>
+<div class="col-md-6 card-login">
+    <button class="btn btn-success btn-all" id="balanceManager" (click)="checkBalance()">Balance Enquiry</button>
+    
+    <button class="btn-all btn btn-success" id="miniStatementCustomer"  (click)="miniStatement()">Mini Statement</button>
+    <button class="btn btn-success btn-all" id="changePasswordManager"  (click)="changePassword()">Change Password</button>
+
+</div>
+
+</div>
+   
+   
+</div>
+
+<div *ngIf="!isManager" class='card-login'>
+    
+    <button class="btn btn-success btn-all" id="balanceCustomer" (click)="checkBalance()">Balance Enquiry</button>
+    <button class="btn btn-success btn-all" id="fundTransferCustomer" (click)="transferFund()">Fund Transfer</button>
+    <button class="btn-all btn-success btn"id="miniStatementCustomer" (click)="miniStatement()">Mini Statement</button>
+    <button class="btn btn-success btn-all" id="changePasswordCustomer" (click)="changePassword()">Change Password</button>
+</div>
+</div>
+</div>

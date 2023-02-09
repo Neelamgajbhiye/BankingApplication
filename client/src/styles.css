@@ -1,0 +1,226 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";  
+/* @import '~ngx-toastr/toastr.css';
+@import 'ngx-toastr/toastr-bs4-alert';
+
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+@import 'ngx-toastr/toastr-bs4-alert';
+
+@import 'ngx-toastr/toastr-bs5-alert'; */
+
+.body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    justify-content:center;
+
+/* background-image:url('./assets/img2.jpg');
+  margin:0; */
+padding:0;
+min-height:100%;
+
+ background-size:cover;
+}
+.eye-icon{
+     /* display: flex; */
+     padding: 5px;
+     color: black;
+     justify-content: flex-end;
+     /* overflow-x: overlay; */
+     /* margin-top: -40px; */
+     margin-top: 10px;
+     margin-left: -40px;
+     font-size: x-large;
+     margin-bottom: 5px;
+}
+.eye-icon2{
+     /* display: flex; */
+    /* padding: 5px; */
+    justify-content: flex-end;
+    /* overflow-x: overlay; */
+    /* margin-top: -40px; */
+    margin-top: 10px;
+    margin-left: -25px;
+    color: black;
+    /* margin-bottom: 5px;*/
+}
+.html{
+  background-image:url('./assets/img1.jpg') no-repeat center center fixed;
+  margin:0px;
+  height:100%;
+  width:100%;
+  -webkit-background-size:cover;
+  -o-background-size:cover;
+  -moz-background-size:cover;
+  background-size:cover;
+ 
+}
+.fit-module{
+    height: fit-content;
+    width: 100%;
+}
+
+/* .logincard{
+    border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    flex-direction: column;
+} */
+.box-1 {
+	border-radius: 10px;
+	border: solid 2px green;
+	padding: 10px;
+	margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.border-green{
+    /* border-radius: 10px;
+	border: solid 2px green; */
+height: 50px;
+}
+.is-invalid{
+  border: solid 1px red;
+}
+.box-transparent {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.box-transparent-2 {
+padding: 10px;
+background: aliceblue;
+}
+.bank-logo{
+  height:40px;
+  border:green solid 2px;
+  padding: 2px;
+  margin: 2px;
+}
+
+.card-outer{
+  display:flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+.card-outer-2{
+    display:flex;
+    justify-content: center;
+    /* min-height: 100vh; */
+  }
+.card-body{
+    justify-content: space-around;
+}
+.margin-error{
+  margin: 5px;
+}
+td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .error{
+    color: red;
+  }
+  .radio-padding{
+    padding-top: 25px;
+  }
+
+  .card-form-row{
+    display: flow-root;
+    width: 100%;
+  }
+  .card-form-row-login{
+    height: 100px;
+    
+  }
+  .is-valid{
+    border:solid 1px green;
+  }
+  .width-100{
+    width: 100%;
+  }
+.card-login {
+  background-image:url('./assets/img1.jpg');
+  
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 50rem;
+            /* float: left; */
+            /* height: 400px; */
+            /* margin-left: 10px; */
+            align-self: center;
+            color: white;
+            font-weight: 200;
+            padding: 5px;
+            border-radius: 10px;
+	border: solid 2px green;
+	padding: 10px;
+	margin: 10px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            padding: 12px 18px;
+        }
+
+        .btn-2 {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        /* .btn-2:hover {
+            border-radius: 15px;
+            width: 85%;
+        }
+         */
+        .btn-up:hover {
+            transform: translateY(-4px);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-all {
+            background-color: white;
+            color: black;
+           height: 50px;
+            border-radius: 10px;
+            border: solid 2px green;
+            font-size: large;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            margin: 2px;
+            /* letter-spacing: 1px; */
+          }
+
+          .width-400{
+width: 400px;
+          }
+
+.card-dashboard{
+  text-align: -webkit-center;
+  margin-left: 70px;
+}
+
+
+          
