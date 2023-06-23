@@ -1,0 +1,27 @@
+<div class="card-outer">
+  
+ 
+    <div class="card-login" style="width: 50rem;height:400px">
+      <div class="card-header">
+        <h1 class="text-center">{{DepositWithdraw}}</h1>
+      </div>
+      <div class="card-body"style="height: 476;width:302;">
+        <form class="form-group" #depositForm="ngForm" (ngSubmit)="handleDepositWithdraw(depositForm.value)">
+           <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+          <div class="form-group">
+            <label for="accountNumber">Account Number</label>
+            <input type="number" class="form-control" id="accountNumber" ngModel placeholder="Enter Account Number"
+              name="accountNumber" required>
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" class="form-control" id="amount" ngModel placeholder="Enter Amount"
+              name="amount" required>
+          </div>
+          <input type="submit" [disabled]="!depositForm.form.valid" class="btn btn-success btn-all" name="submit" value="submit"/>
+        </form>
+      </div>
+       
+    </div>
+  </div>

@@ -1,0 +1,150 @@
+<div class="card-outer-2">
+<div class="card-login">
+  <div class="card-header">
+    <h1 style="justify-content: center;">Mini Statement</h1>
+  </div>
+  <div class="card-body"style="height: 476;width:302;">
+<form class="form-group" #miniStatementForm="ngForm" (ngSubmit)="handleminiStatement(miniStatementForm.value)">
+    <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+   <!-- <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div> -->
+   <div class="form-group">
+     <label for="email">Account Number</label>
+     <input type="text" class="form-control" id="accountNumber" ngModel placeholder="Enter Account Number"
+       name="accountNumber">
+   </div>
+
+   <input type="submit"  class="btn btn-success btn-all" [disabled]="!miniStatementForm.form.valid" name="submit" value="submit"/>
+ </form>
+</div></div>
+</div>
+<table class="table align-middle mb-0 bg-dark" *ngIf="loginSuccess">
+    <thead class="bg-dark">
+      <tr>
+        <th>Transaction Id</th>
+        <th>From Account</th>
+        <th>To Account</th>
+        <th>Amount</th>
+        <th>Date Of Transaction</th>
+        <th>Transaction Status</th>
+        <th>Description</th>
+      
+
+      </tr>
+    </thead>
+    <tbody>
+        
+
+
+        <tr *ngFor="let transaction of transactions">
+            <td>{{transaction.transactionId}}</td>
+            <td>{{transaction.fromAccount?.accountNumber}}</td>
+            <td>{{transaction.toAccount?.accountNumber}}</td>
+            <td>{{transaction.amount}}</td>
+            <td>{{transaction.dateOfTransaction}}</td>
+            <td>
+            <span  
+            class="badge badge-success rounded-pill d-inline" 
+            [ngStyle]="{'background-color': transaction.transactionStatus=='SUCCESS' ? 'green' : 'red' }" >
+              {{transaction.transactionStatus}}
+            </span></td>
+            <td>{{transaction.description}}</td>
+        </tr>
+      <!-- <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">John Doe</p>
+              <p class="text-muted mb-0">john.doe@gmail.com</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">Software engineer</p>
+          <p class="text-muted mb-0">IT department</p>
+        </td>
+        <td>
+          <span class="badge badge-success rounded-pill d-inline">Active</span>
+        </td>
+        <td>Senior</td>
+        <td>
+          <button type="button" class="btn btn-link btn-sm btn-rounded">
+            Edit
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+                class="rounded-circle"
+                alt=""
+                style="width: 45px; height: 45px"
+                />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">Alex Ray</p>
+              <p class="text-muted mb-0">alex.ray@gmail.com</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">Consultant</p>
+          <p class="text-muted mb-0">Finance</p>
+        </td>
+        <td>
+          <span class="badge badge-primary rounded-pill d-inline"
+                >Onboarding</span
+            >
+        </td>
+        <td>Junior</td>
+        <td>
+          <button
+                  type="button"
+                  class="btn btn-link btn-rounded btn-sm fw-bold"
+                  mdbRipple rippleColor="dark"
+                  >
+            Edit
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+                class="rounded-circle"
+                alt=""
+                style="width: 45px; height: 45px"
+                />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">Kate Hunington</p>
+              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">Designer</p>
+          <p class="text-muted mb-0">UI/UX</p>
+        </td>
+        <td>
+          <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
+        </td>
+        <td>Senior</td>
+        <td>
+          <button
+                  type="button"
+                  class="btn btn-link btn-rounded btn-sm fw-bold"
+                  mdbRipple rippleColor="dark"
+                  >
+            Edit
+          </button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>

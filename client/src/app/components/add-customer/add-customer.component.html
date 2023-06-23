@@ -1,0 +1,308 @@
+<div class="container card-outer">
+   
+    <div class="card-login" style="width:100%" >
+      <div class="card-header"> <h1 class="text-center">{{Title}}</h1></div>
+      <div class="card-body container-fluid">
+        <form class="form-group" #addCustomerForm="ngForm"  (ngSubmit)="addCustomer(addCustomerForm.value)" [appMatchPassword]="['password', 'confirmPassword']" novalidate >
+          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+          <div class="form-row card-form-row  ">
+            <div class="col-md-6 col-xs-6">
+            <div class="form-group "> 
+          
+            <label for="name"><span class="error">*</span>Customer name: </label>
+            <input type="text" class="form-control" id="name" #name="ngModel" ngModel placeholder="Enter Customer Name"
+              name="name" required minlength="4" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) && name.errors }">
+             
+              <div class="margin-error">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="invalid-feedback error" style="width: fit-content;">
+            
+              <div *ngIf="name.errors?.['required']">
+               {{validationMessage.name.nameRequired}}
+              </div>
+              <div *ngIf="name.errors?.['minlength']">
+                {{validationMessage.name.nameMinLength}}
+              </div>
+            </div>
+
+            </div>
+           
+        </div>
+      </div>
+      
+      <div class="form-group col-md-6">
+        <label for="email"><span class="error">*</span>Email:</label>
+        <input type="email" class="form-control" ngModel id="email" placeholder="Enter Email"
+          name="text"required appEmailPattern  #email="ngModel"
+       
+          [ngClass]="{ 'is-invalid':email.invalid && (email.dirty ||email.touched) && email.errors }">
+      
+      <div class="row  margin-error">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+        class=" invalid-feedback error" style="width: fit-content;">
+    
+      <span *ngIf="email.errors?.['required']">
+       {{validationMessage.email.emailRequired}}
+      </span>
+      <span *ngIf="email.errors?.['invalidEmail']">
+       {{validationMessage.email.emailValid}}
+      </span>
+      <!-- <div *ngIf="name.errors?.['forbiddenName']">
+        Name cannot be Bob.
+      </div> -->
+    
+    </div>
+ 
+</div>
+      </div>
+      </div>
+        
+
+          <div class="form-row card-form-row">
+          <div class="form-group col-md-6">
+            <label for="userName"><span class="error">*</span>User Name:</label>
+            <input type="text" class="form-control" id="userName" ngModel placeholder="Enter user Name" #userName="ngModel"
+              name="userName" required minlength="4" appValidateUserName [ngClass]="{ 'is-invalid': userName.invalid && (userName.dirty || userName.touched) && userName.errors }">
+              <div class="row margin-error">
+                <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+                class="invalid-feedback error" style="width: fit-content;">
+            
+              <div *ngIf="userName.errors?.['required']">
+               {{validationMessage.userName.usernameRequired}}
+              </div>
+           
+              <div *ngIf="userName.errors?.['minlength']">
+                {{validationMessage.userName.usernameMinLength}}
+              </div>
+              <div *ngIf="userName.errors?.['usernameNotAvailable']">
+                {{validationMessage.userName.usernameNotAvailable}}
+              </div>
+            </div>
+
+            </div>
+          </div>
+          <div class="form-group col-md-6 radio-padding" >
+            <label for="gender" class="col-md-4"><span class="error">*</span>Gender:</label>
+            <div class="col-md-4">
+              <input type="radio" value='MALE'  name="gender" [checked]="isSelectedMale" ngModel  #gender="ngModel" required><label>Male</label>
+            </div>
+            <div class="col-md-4">
+  <input type="radio" value='FEMALE'  name="gender" ngModel [checked]="isSelectedFemale"  required #gender="ngModel"><label>Female</label>
+  <!-- <input type="radio" value='Transgender'  name="gender" ngModel>Male
+  <input type="radio" value='Female'  name="gender" ngModel >Female -->
+  </div>
+  <div *ngIf="gender.invalid" class="invalid-feedback error" style="padding-left:10px ;"> 
+    Please select a gender. 
+</div> 
+        </div></div>
+          <div class="form-group card-form-row form-row" style="justify-content: space-between;">
+            <div class="form-group col-md-6" >
+                <label for="pwd"><span class="error">*</span>Password:</label>
+                <div style="display:flex">
+                  <input [type]="fieldTextType ? 'text' : 'password'"  
+                  class="form-control" ngModel id="password" placeholder="Enter Password"
+                  name="password"
+                  appPasswordPattern 
+                   required #pwd="ngModel" aria-describedby="basic-addon2" 
+                   [ngClass]="{ 'is-invalid': pwd.invalid && (pwd.dirty || pwd.touched) && pwd.errors 
+                   ,'is-valid':!pwd.invalid && !(pwd.dirty || pwd.touched) && !pwd.errors}">
+                  <!-- <div class="input-group-addon border-green" style="height: fit-content;"> -->
+                    <!-- <span class="input-group-text" id="basic-addon2"> -->
+                      <i  class=" fa eye-icon2"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                      }"
+                      (click)="toggleFieldTextType('password')"></i>
+                    <!-- </span> -->
+                 <!-- </div> -->
+                </div>
+               
+                  <div class="row  margin-error">
+                    <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"
+                    class="invalid-feedback error " >
+                
+                  <div *ngIf="pwd.errors?.['required']">
+                    Password is required.
+                  </div>
+                  <div *ngIf="pwd.errors?.['invalidPassword']">
+                    Your password must be at least 8 characters long, contain at least one number, one uppercase and lowercase letter.
+                  </div>
+                </div>
+      
+                
+              </div>
+            </div>
+            <div class="form-group col-md-6" >
+             
+                <label for="pwd"><span class="error">*</span>Confirm Password:</label>
+                <div style="display:flex">
+                  <input [type]="fieldTextType2 ? 'text' : 'password'"  
+                  class="form-control" ngModel id="confirmPassword" placeholder="Enter Password"
+                  name="confirmPassword"
+                  
+                   required #confirmpwd="ngModel" aria-describedby="basic-addon2" 
+                   [ngClass]="{ 'is-invalid': confirmpwd.invalid && (confirmpwd.dirty || confirmpwd.touched) && confirmpwd.errors 
+                   ,'is-valid':!confirmpwd.invalid && !(confirmpwd.dirty || confirmpwd.touched) && !confirmpwd.errors}">
+                  <!-- <div class="input-group-addon border-green" style="height: fit-content;"> -->
+                    <!-- <span class="input-group-text" id="basic-addon2"> -->
+                      <i  class=" fa eye-icon2"
+                      [ngClass]="{
+                        'fa-eye-slash': !fieldTextType2,
+                        'fa-eye': fieldTextType2
+                      }"
+                      (click)="toggleFieldTextType('confirmPassword')"></i>
+                    <!-- </span> -->
+                 <!-- </div> -->
+                </div>
+               
+                  <div class="row  margin-error">
+                    <div *ngIf="confirmpwd.invalid && (confirmpwd.dirty || confirmpwd.touched)"
+                    class="invalid-feedback error width-400" style="width: 375px;">
+                
+                  <div *ngIf="confirmpwd.errors?.['required']">
+                     Confirm password is required.
+                  </div>
+                  <div *ngIf="confirmpwd.errors?.['passwordMismatch']" style="width: 375px;">
+                  Password and Confirm Password do not match.
+                  </div>
+                </div>
+      
+                </div>
+              
+            </div>
+            
+
+          </div>
+          <div class="form-row card-form-row">
+            <div class="col-md-6">         
+               <div class="form-group">
+            <label for="dateofbirth"><span class="error">*</span>Date of Birth:</label>
+            <input type="date" class="form-control" id="dateOfBirth" ngModel 
+            [ngClass]="{ 'is-invalid': dob.invalid && (dob.dirty || dob.touched) && dob.errors }"
+              name="dateOfBirth" required appValidateDateofbirth [max]="maxDate" #dob="ngModel" >
+             <div class="row  margin-error">
+              <div *ngIf="dob.invalid && (dob.dirty || dob.touched)"
+              class="invalid-feedback error" >
+          
+            <div *ngIf="dob.errors?.['required']">
+              Date of birth is required.
+            </div>
+            <div *ngIf="dob.errors?.['futureDateError']">
+              Cannot select a future date.
+            </div>
+          </div>
+          
+          
+          </div>
+          </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="phone"><span class="error">*</span> telephone Number:</label>
+            <input type="number"  pattern="^((\\+91-?)|0)?[0-9]{10}$"
+            [ngClass]="{ 'is-invalid': phone.invalid && (phone.dirty || phone.touched) && phone.errors }"
+             class="form-control" id="phone" ngModel placeholder="Enter Telephone Number"
+              name="phone" required #phone="ngModel">
+              <div class="row  margin-error">
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                class="invalid-feedback error" >
+            
+              <div *ngIf="phone.errors?.['pattern']">
+                Phone number must be 10 digits.
+              </div>
+              <div *ngIf="phone.errors?.['required']">
+                Phone number is required.
+              </div>
+            </div>
+            
+            
+            </div>
+     
+          </div>
+         
+         
+        
+        </div>
+          <div class=" form-group form-row card-form-row">
+            <div class="form-group col-md-6">
+              <label for="flatNumber"><span class="error">*</span>flatNo:</label>
+              <input type="number" class="form-control" ngModel id="flatNumber" placeholder="Enter flat No"
+                name="flatNumber"required  #flatNumber="ngModel" [ngClass]="{ 'is-invalid': flatNumber.invalid && (flatNumber.dirty || flatNumber.touched) && flatNumber.errors }">
+                <div class="row  margin-error">
+                  <div *ngIf="flatNumber.invalid && (flatNumber.dirty || flatNumber.touched)"
+                  class="invalid-feedback error" style="width: fit-content;">
+              
+                <div *ngIf="flatNumber.errors?.['required']">
+                  flatNumber is required.
+                </div>
+                <div *ngIf="flatNumber.errors?.['minlength']">
+                  flatNumber must be at least 4 characters long.
+                </div>
+              </div>
+  
+              </div>
+            </div>
+          <div class="form-group col-md-6">
+            <label for="city"><span class="error">*</span>City:</label>
+            <input type="text" class="form-control" id="city" ngModel placeholder="Enter City"
+              name="city"required minlength="4" #city="ngModel"[ngClass]="{ 'is-invalid': city.invalid && (city.dirty || city.touched) && city.errors }">
+              <div class="row  margin-error">
+                <div *ngIf="city.invalid && (city.dirty || city.touched)"
+                class="invalid-feedback error" style="width: fit-content;">
+            
+              <div *ngIf="city.errors?.['required']">
+                City is required.
+              </div>
+              <div *ngIf="city.errors?.['minlength']">
+                City must be at least 4 characters long.
+              </div>
+            </div>
+
+            </div>
+          </div>
+          </div>
+          <div class="form-row card-form-row">
+          <div class="form-group col-md-6">
+            <label for="state"><span class="error">*</span>State:</label>
+            <input type="text" class="form-control" #state="ngModel" ngModel id="state" placeholder="Enter state"
+              name="state"required minlength="4" [ngClass]="{ 'is-invalid': state.invalid && (state.dirty || state.touched) && state.errors }">
+              <div class="row  margin-error">
+                <div *ngIf="state.invalid && (state.dirty || state.touched)"
+                class="invalid-feedback error" style="width: fit-content;">
+            
+              <div *ngIf="state.errors?.['required']">
+                State is required.
+              </div>
+              <div *ngIf="state.errors?.['minlength']">
+                State must be at least 4 characters long.
+              </div>
+            </div>
+
+            </div></div>
+              <div class="form-group col-md-6">
+                <label for="pincode"><span class="error">*</span>  Pincode:</label>
+                <input type="number" class="form-control" ngModel id="pincode" placeholder="Enter pincode"
+                  name="pincode"required minlength="4" #pincode="ngModel" [ngClass]="{ 'is-invalid': pincode.invalid && (pincode.dirty || pincode.touched) && pincode.errors }">
+                  <div class="row  margin-error">
+                    <div *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)"
+                    class="invalid-feedback error" style="width: fit-content;">
+                
+                  <div *ngIf="pincode.errors?.['required']">
+                    Pincode is required.
+                  </div>
+                  <div *ngIf="pincode.errors?.['minlength']">
+                    Pincode must be at least 4 characters long.
+                  </div>
+                </div>
+    
+                </div>
+              </div>
+
+          </div>
+          <input type="submit" [disabled]="!addCustomerForm.form.valid" class="btn btn-success btn-all" name="Submit" value="Submit"/>
+        </form>
+      </div>
+       
+    </div>
+  </div>
