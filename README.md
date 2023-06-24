@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-To install this example application, run the following commands:
+To install this application, run the following commands:
 
 ```bash
 git clone https://github.com/Neelamgajbhiye/BankingApplication.git
